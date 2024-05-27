@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "325176695118",
+    "project_id": "compra-c8725",
+    "storage_bucket": "compra-c8725.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325176695118:android:647dc25537b7f110cb661f",
+        "android_client_info": {
+          "package_name": "com.example.my_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325176695118-dk1qcafjcjav4tvcsu8i1nagr34qkrp5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaWWTiWyali4x64hsirfgI7LANXfCHPCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325176695118-dk1qcafjcjav4tvcsu8i1nagr34qkrp5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325176695118:android:f23d5028f48a02d2cb661f",
+        "android_client_info": {
+          "package_name": "com.hgt.compra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "325176695118-dk1qcafjcjav4tvcsu8i1nagr34qkrp5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaWWTiWyali4x64hsirfgI7LANXfCHPCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "325176695118-dk1qcafjcjav4tvcsu8i1nagr34qkrp5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
