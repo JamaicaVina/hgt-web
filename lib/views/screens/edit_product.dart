@@ -310,7 +310,7 @@ class _EditProductPageState extends State<EditProductPage> {
                                     child: StreamBuilder<QuerySnapshot>(
                                       stream: FirebaseFirestore.instance
                                           .collection('category')
-                                          .orderBy('name')
+                                          .orderBy('id')
                                           .snapshots(),
                                       builder: (BuildContext context,
                                           AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -329,7 +329,7 @@ class _EditProductPageState extends State<EditProductPage> {
 
                                         if (setDefaultcategoryname) {
                                           category =
-                                              snapshot.data!.docs[0].get('name');
+                                              snapshot.data!.docs[0].get('id');
                                           debugPrint(
                                               'setDefault categoryname: $category');
                                         }
@@ -366,17 +366,16 @@ class _EditProductPageState extends State<EditProductPage> {
                                           items: snapshot.data!.docs
                                               .map((value) {
                                             return DropdownMenuItem(
-                                              value: value.get('name'),
-                                              child: Text('${value.get('name')}'),
+                                              value: value.get('id'),
+                                              child: Text('${value.get('id')}'),
                                             );
                                           }).toList(),
                                           onChanged: (value) {
                                             setState(() {
                                               category = value;
-                                              categoryModel =
-                                                  ''; // Reset subcategory value
-                                              setDefaultsubcategory =
-                                                  true; // Reset subcategory dropdown
+                                              // categoryModel = ''; // Reset subcategory value
+                                              setDefaultcategoryname = false;
+                                              setDefaultsubcategory = true; // Reset subcategory dropdown
                                             });
                                           },
                                           hint: const Text(
