@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:my_app/new/chatspage-archived.dart';
 import 'package:my_app/new/chatspage.dart';
+import 'package:my_app/new/comps/widgets-archived.dart';
 import 'package:my_app/new/messagepage.dart';
 import 'your_path/dismissible_message.dart'; // Update the path accordingly
 import 'comps/styles.dart';
@@ -19,7 +21,7 @@ class ArchivedMessage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<ArchivedMessage> {
-  late String userName;
+  String userName = '';
   final StreamController<List<DocumentSnapshot>> _streamController =
       StreamController<List<DocumentSnapshot>>();
 
@@ -78,15 +80,36 @@ class _MyHomePageState extends State<ArchivedMessage> {
   bool open = false;
 
   Future<void> deleteMessage(String roomId) async {
-    await firestore.collection('ArchivedMessages').doc(roomId).delete().then((_) {
-      // Update the UI after deletion
-      setState(() {
-        // Remove the message from the UI
-        // You may need to fetch the rooms again to update the list
-      });
-    }).catchError((error) {
-      print("Failed to delete message: $error");
-    });
+    // await firestore.collection('ArchivedMessages').doc(roomId).delete().then((_) {
+    //   // Update the UI after deletion
+    //   setState(() {
+    //     // Remove the message from the UI
+    //     // You may need to fetch the rooms again to update the list
+    //   });
+    // }).catchError((error) {
+    //   print("Failed to delete message: $error");
+    // });
+
+    // Fetch messages from the ArchivedMessages Messages sub-collection
+    var messagesSnapshot = await firestore.collection('ArchivedMessages')
+        .doc(roomId)
+        .collection('messages')
+        .get();
+
+
+    // Delete the room's Messages sub-collection
+    for (var messageDoc in messagesSnapshot.docs) {
+      await firestore.collection('ArchivedMessages')
+          .doc(roomId)
+          .collection('messages')
+          .doc(messageDoc.id)
+          .delete();
+    }
+
+    // Delete the room document
+    await firestore.collection('ArchivedMessages').doc(roomId).delete();
+
+    print("Room and messages archived successfully");
   }
 
   @override
@@ -232,7 +255,7 @@ class _MyHomePageState extends State<ArchivedMessage> {
                                                   if (!snap.hasData) {
                                                     return SizedBox();
                                                   }
-                                                  return ChatsPage(
+                                                  return ChatsPagearchived(
                                                     senderName: '$userName',
                                                     token: snap.data![
                                                         'user-token'],
@@ -258,7 +281,7 @@ class _MyHomePageState extends State<ArchivedMessage> {
                 ),
               ],
             ),
-            ChatWidgets.searchBar(open)
+            ChatWidgetsarchived.searchBar(open)
           ],
         ),
       ),
