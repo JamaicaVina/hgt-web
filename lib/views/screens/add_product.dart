@@ -318,7 +318,7 @@ class _AddProductPageState extends State<AddProductPage> {
                                       child: StreamBuilder<QuerySnapshot>(
                                         stream: FirebaseFirestore.instance
                                             .collection('category')
-                                            .orderBy('name')
+                                            .orderBy('id')
                                             .snapshots(),
                                         builder: (BuildContext context,
                                             AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -329,7 +329,7 @@ class _AddProductPageState extends State<AddProductPage> {
                                           // setDefault will change if an item was selected
                                           // First item from the List will be displayed
                                           if (setDefaultcategoryname) {
-                                            category = snapshot.data!.docs[0].get('name');
+                                            category = snapshot.data!.docs[0].get('id');
                                             debugPrint('setDefault categoryname: $category');
                                           }
                                           return DropdownButtonFormField(
@@ -357,8 +357,8 @@ class _AddProductPageState extends State<AddProductPage> {
                                             value: category,
                                             items: snapshot.data!.docs.map((value) {
                                               return DropdownMenuItem(
-                                                value: value.get('name'),
-                                                child: Text('${value.get('name')}'),
+                                                value: value.get('id'),
+                                                child: Text('${value.get('id')}'),
                                               );
                                             }).toList(),
                                             onChanged: (value) {

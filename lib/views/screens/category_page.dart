@@ -1212,7 +1212,7 @@ class _CategoryPageState extends State<CategoryPage> {
                                                                                         children: [
                                                                                           TextField(
                                                                                             controller: addSubCategory,
-                                                                                            decoration: InputDecoration(hintText: 'Category Name', enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: const BorderSide(color: Color.fromARGB(255, 31, 31, 176))), focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: const BorderSide(color: Color.fromARGB(255, 31, 31, 176)))),
+                                                                                            decoration: InputDecoration(hintText: 'Subcategory Name', enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: const BorderSide(color: Color.fromARGB(255, 31, 31, 176))), focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: const BorderSide(color: Color.fromARGB(255, 31, 31, 176)))),
                                                                                           ),
                                                                                           const SizedBox(
                                                                                             height: 20,
